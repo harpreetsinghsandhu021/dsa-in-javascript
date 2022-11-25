@@ -12,7 +12,7 @@ function rotateArr(arr, d) {
     temp[k] = arr[j];
     k++;
   }
-  //   console.log(temp);
+  return temp;
 }
 
 //rotating array
@@ -28,7 +28,8 @@ function rotateArr2(arr, d) {
     arr[arr.length - 1] = temp;
     p++;
   }
-  console.log(arr);
+
+  return arr;
 }
 
 let arr = [1, 2, 3, 4, 5, 6, 7];
@@ -58,6 +59,7 @@ function reverse(arr) {
     start++;
     end--;
   }
+  return arr;
 }
 
 // REVERSAL ALGORITHMN
@@ -72,7 +74,7 @@ function rotateArray(arr, d) {
   reverseArray(arr, d, arr.length - 1);
   reverseArray(arr, 0, arr.length - 1);
 
-  console.log(arr);
+  return arr;
 }
 
 // rotateArray([1, 2, 3, 4, 5, 6, 7], 2);
@@ -90,7 +92,7 @@ function rotateArrayClockWise(arr, d) {
     p++;
   }
 
-  console.log(arr);
+  return arr;
 }
 // rotateArrayClockWise([1, 2, 3, 4, 5, 6, 7], 2);
 
@@ -145,9 +147,9 @@ function majorityElements(arr) {
   }
 
   if (count > Math.floor(arr.length >> 1)) {
-    console.log(arr[index]);
+    return arr[index];
   } else {
-    console.log("no majority element found!!");
+    return "no majority element found!!";
   }
 }
 
@@ -179,9 +181,9 @@ function majorityElements2(arr) {
   }
 
   if (maxCount > Math.floor(arr.length >> 1)) {
-    console.log(arr[index]);
+    return arr[index];
   } else {
-    console.log("no majority element found!!");
+    return "no majority element found!!";
   }
 }
 
@@ -213,9 +215,9 @@ function majorityElements3(arr) {
   }
 
   if (maxCount > Math.floor(arr.length >> 1)) {
-    console.log(arr[index]);
+    return arr[index];
   } else {
-    console.log("no majority element found!!");
+    return "no majority element found!!";
   }
 }
 
@@ -229,7 +231,7 @@ function clockWiseRotationUsingReversal(arr, d) {
   reverseArray(arr, n - d, d);
   reverseArray(arr, 0, n);
 
-  console.log(arr);
+  return arr;
 }
 
 // clockWiseRotationUsingReversal([1, 2, 3, 4, 5, 6], 2);
@@ -250,7 +252,7 @@ function segregateEvenAndOdd(arr) {
     }
   }
 
-  console.log(combined);
+  return combined;
 }
 
 // segregating even and odd in time complexity of O(n)
@@ -266,7 +268,7 @@ function segregateEvenAndOdd2(arr) {
     }
   }
 
-  console.log(arr);
+  return arr;
 }
 
 // segregateEvenAndOdd([1, 3, 2, 4, 7, 6, 9, 10]);
@@ -286,7 +288,8 @@ function multiplyElement(arr) {
   }
 
   arr[arr.length - 1] = secondLast * arr[arr.length - 1];
-  console.log(arr);
+
+  return arr;
 }
 
 // multiplyElement([2, 3, 4, 5, 6, ]);
@@ -311,7 +314,8 @@ function swapZeroes(arr) {
       k++;
     }
   }
-  console.log(combined);
+
+  return combined;
 }
 
 // swapping zeroes to end of array
@@ -328,7 +332,7 @@ function swapZeroesTwo(arr) {
     }
   }
 
-  console.log(arr);
+  return arr;
 }
 
 // swapping two variables
@@ -348,7 +352,7 @@ function swapZeroesThree(arr) {
     }
   }
 
-  console.log(arr);
+  return arr;
 }
 
 // swapZeroes([5, 6, 0, 4, 6, 0, 9, 0, 8])
@@ -374,7 +378,7 @@ function reArrange(arr) {
     }
   }
 
-  console.log(arr);
+  return arr;
 }
 
 // reArrange([6, 4, 2, 1, 8, 3])
@@ -395,7 +399,7 @@ function reArrangeForLargestNumeber(arr) {
     return ba - ab;
   });
 
-  console.log(arr.join(""));
+  return arr.join("");
 }
 
 // reArrangeForLargestNumeber([1, 34, 3, 98, 9, 76, 45, 4])
@@ -414,7 +418,7 @@ function findMinimumElement(arr) {
     }
   }
 
-  console.log(min);
+  return min;
 }
 
 // findMinimumElement([5, 6, 1, 2, 3, 4])
@@ -431,7 +435,7 @@ function multipleLeftRotations(arr, k) {
     p++;
   }
 
-  console.log(arr);
+  return arr;
 }
 
 // multipleLeftRotations([1, 3, 5, 7, 9],1)
@@ -462,7 +466,7 @@ function reArrangeNegativeAndPostiveAlternately(arr) {
     i++;
   }
 
-  console.log(arr);
+  return arr;
 }
 
 // NegativeToEnd([2,3,-4,-1,6,-9])
@@ -495,7 +499,7 @@ function negativeToFrontAndPositiveToEnd(arr) {
       swap(arr, i, j);
     }
   }
-  console.log(arr);
+  return arr;
 }
 
 // negativeToFrontAndPositiveToEnd([12, 11, -13, -5, 6, -7, 5, -3, -6])
@@ -537,7 +541,7 @@ function negativeFirstAndPositiveEnd3(arr) {
     }
   }
 
-  console.log(combined);
+  return combined;
 }
 
 // negativeFirstAndPositiveEnd3([12, 11, -13, -5, 6, -7, 5, -3, -6])
@@ -590,7 +594,7 @@ function negativeToEnd(arr) {
       k++;
     }
   }
-  console.log(combined);
+  return combined;
 }
 
 // let start = performance.now();
@@ -619,7 +623,7 @@ function negativeToEnd2(arr) {
       negativesIndex--;
     }
   }
-  console.log(arr);
+  return arr;
 }
 
 // let start2 = performance.now();
@@ -627,111 +631,86 @@ function negativeToEnd2(arr) {
 // let end2 = performance.now();
 // console.log("constant space", end2 - start2);
 
-// ReArrange array in the following fashion
-// [smallest,highest,secondSmallest,secondHighest,thirdSmallest,thirdHighest]
-
-function reArrangeInHighestAndSmallest(arr) {
-  let curr = 0;
-  let min = arr[0];
-  let max = arr[0];
-  let secondMax = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    curr = arr[i];
-
-    if (max < curr) {
-      secondMax = max;
-      max = curr;
-    } else if (secondMax < curr) {
-      secondMax = curr;
-    }
-
-    if (curr < min) {
-      min = curr;
-    }
-  }
-  console.log(max, min, secondMax);
-}
-
 // reArrangeInHighestAndSmallest([10, 9, 8, 7, 6]);
-
 
 //finding largest sum contigous array
 //using kaden`s algoritmn
-function largestSumContigiousArray(arr){
-let curr = 0
-let max = 0
-  for(let i = 0;i < arr.length;i++){
-    curr = curr + arr[i]
+function largestSumContigiousArray(arr) {
+  let curr = 0;
+  let max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    curr = curr + arr[i];
 
-    if(curr > max){
-      max = curr
+    if (curr > max) {
+      max = curr;
     }
-    if(curr < 0){
-      curr = 0
-
+    if (curr < 0) {
+      curr = 0;
     }
-
-
   }
 
-  console.log(max)
-
+  return max;
 }
-
 
 // largestSumContigiousArray([ -2, -3, 4, -1, -2, 1, 5, -3 ])
 
-
-
-
 //find subarray with least average
 
+function subArrayWithLeastAverage(arr, k) {
+  let start = 0;
+  let avg = 0;
+  let avgNow = 0;
+  let index = 0;
+  let temp = k;
+  let leastAvg = arr[arr.length - 1];
 
-function subArrayWithLeastAverage(arr,k){
+  while (start < k) {
+    avg = avg + arr[start];
+    start++;
 
-  let start = 0
-  let avg = 0
-  let avgNow = 0
-  let index  = 0
-  let temp  = k
-  let leastAvg = arr[arr.length -  1]
+    if (start === k && k <= arr.length) {
+      start = start - 2;
+      avgNow = avg / temp;
 
-  while(start < k){
-  
-    avg = avg + arr[start]
-    start++
-   
-    if(start === k && k <= arr.length){
-      start = start - 2
-      avgNow = avg / temp
-      
-      avg = 0
-      
-      k++
+      avg = 0;
 
-      if(avgNow < leastAvg){
-        leastAvg = avgNow
-        index = start
+      k++;
+
+      if (avgNow < leastAvg) {
+        leastAvg = avgNow;
+        index = start;
       }
-
     }
-  
   }
 
-  if(temp === 2){
-    console.log([arr[index - 1],arr[index]]);
-
-  }else if(temp === 3){
-
-    console.log([arr[index - 1],arr[index],arr[index + 1]]);
+  if (temp === 2) {
+    return [arr[index - 1], arr[index]];
+  } else if (temp === 3) {
+    return [arr[index - 1], arr[index], arr[index + 1]];
   }
-
-  
-
 }
 
-subArrayWithLeastAverage([3, 7, 90, 20, 10, 50, 40],3)
-subArrayWithLeastAverage([3, 7, 5, 20, -10, 0, 12],2)
+// subArrayWithLeastAverage([3, 7, 90, 20, 10, 50, 40],3)
+// subArrayWithLeastAverage([20, 3, 13, 5, 10, 14, 8, 5, 11, 9, 1, 11],9)
 
 // subArrayWithLeastAverage([20, 3, 13, 5, 10, 14, 8, 5, 11, 9, 1, 11],9)
 
+function minimumDistance(arr, x, y) {
+  let minimumDistance = 0;
+  let point1 = 0;
+  let point2 = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === x) {
+      point1 = i;
+    } else if (arr[i] === y) {
+      point2 = i;
+    }
+  }
+
+  minimumDistance = Math.abs(point1 - point2);
+
+  return minimumDistance;
+}
+
+minimumDistance([3, 4, 5], 3, 5);
