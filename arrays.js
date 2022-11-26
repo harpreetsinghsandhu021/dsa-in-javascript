@@ -713,4 +713,15 @@ function minimumDistance(arr, x, y) {
   return minimumDistance;
 }
 
-minimumDistance([3, 4, 5], 3, 5);
+minimumDistance([3, 6, 9, 10, 44, 66, 0], 9, 66);
+
+//minimize the maximum difference b/w the heights
+
+function maximumDifference(arr, k) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i] + k;
+  }
+  console.log(arr);
+}
+
+maximumDifference([1, 15, 10], 6);

@@ -126,5 +126,41 @@ function kadanesAlgoritmn(arr) {
   console.log(max);
 }
 
-maxSumSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
-kadanesAlgoritmn([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+// maxSumSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+// kadanesAlgoritmn([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+
+//quick sort
+
+function swap(arr, start, end) {
+  let temp = arr[start];
+  arr[start] = arr[end];
+  arr[end] = temp;
+}
+
+function pivot(arr, pivot = 0, endIndex = arr.length - 1) {
+  let swapIndex = pivot;
+
+  for (let i = pivot + 1; i <= endIndex; i++) {
+    if (arr[i] < arr[pivot]) {
+      swapIndex++;
+      swap(arr, swapIndex, i);
+    }
+  }
+  swap(arr, pivot, swapIndex);
+
+  return swapIndex;
+}
+
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    let pivotIndex = pivot(arr, left, right);
+
+    quickSort(arr, left, pivotIndex - 1);
+    quickSort(arr, pivotIndex + 1, right);
+  }
+  return arr;
+}
+
+// console.log(pivot([4, 6, 1, 7, 3, 2, 5]));
+
+console.log(quickSort([4, 6, 1, 7, 3, 2, 5]));
