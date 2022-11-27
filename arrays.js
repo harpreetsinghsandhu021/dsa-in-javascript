@@ -32,7 +32,7 @@ function rotateArr2(arr, d) {
   return arr;
 }
 
-let arr = [1, 2, 3, 4, 5, 6, 7];
+// let arr = [1, 2, 3, 4, 5, 6, 7];
 
 // rotateArr2(arr, 3);
 
@@ -502,7 +502,9 @@ function negativeToFrontAndPositiveToEnd(arr) {
   return arr;
 }
 
-// negativeToFrontAndPositiveToEnd([12, 11, -13, -5, 6, -7, 5, -3, -6])
+// console.log(
+//   negativeToFrontAndPositiveToEnd([12, 11, -13, -5, 6, -7, 5, -3, -6])
+// );
 
 // bring negative to front and positive to end
 
@@ -520,7 +522,7 @@ function negativeFirstAndPositiveEnd(arr) {
 
   // console.log(arr);
 }
-// negativeFirstAndPositiveEnd([12, 11, -13, -5, 6, -7, 5, -3, -6])
+// negativeFirstAndPositiveEnd([12, 11, -13, -5, 6, -7, 5, -3, -6]);
 
 // bring negative to front and positive to end
 
@@ -724,4 +726,98 @@ function maximumDifference(arr, k) {
   console.log(arr);
 }
 
-maximumDifference([1, 15, 10], 6);
+// maximumDifference([1, 15, 10], 6);
+
+//sort an array of 0 1 and 2
+//the below method sorts the array in O(n)
+// and space complexity of O(1)
+function sort012(arr) {
+  let low = 0;
+  let mid = 0;
+  let high = arr.length - 1;
+
+  while (mid <= high) {
+    if (arr[mid] === 0) {
+      let temp = arr[low];
+      arr[low] = arr[mid];
+      arr[mid] = temp;
+      low++;
+      mid++;
+    } else if (arr[mid] === 1) {
+      mid++;
+    } else {
+      let temp = arr[mid];
+      arr[mid] = arr[high];
+      arr[high] = temp;
+      high--;
+    }
+  }
+
+  return arr;
+}
+sort012([0, 1, 2, 0, 1, 2]);
+
+//treat arrays as sets and return union of two unsorted arrays and
+// intersection
+// this method is not very effecient its time compelxity
+function FindUnion(arr1, arr2) {
+  let newArr = [];
+  let newSet = new Set();
+
+  for (let i = 0; i < arr1.length; i++) {
+    newSet.add(arr1[i]);
+  }
+
+  for (let i = 0; i < arr2.length; i++) {
+    newSet.add(arr2[i]);
+  }
+
+  newSet.forEach((s) => {
+    newArr.push(s);
+  });
+
+  newArr.sort(function (a, b) {
+    return a - b;
+  });
+  return newArr;
+}
+
+let arr1 = [1, 2, 5, 6, 2, 3, 5, 7, 3];
+let arr2 = [2, 4, 5, 6, 8, 9, 4, 6, 5, 4];
+
+function findIntersection(arr1, arr2) {
+  let newArr = [];
+
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] === arr2[j]) {
+        newArr.push(arr2[j]);
+      }
+    }
+  }
+
+  return newArr;
+}
+
+function minimizeTheDifference(arr, k) {
+  arr.sort(function (a, b) {
+    return a - b;
+  });
+
+  let diff = arr[arr.length - 1] - arr[0];
+  let min;
+  let max;
+
+  for (let i = 1; i < arr.length - 1; i++) {
+    if (arr[i] - k < 0) continue;
+
+    max = Math.max(arr[i - 1] + k, arr[arr.length - 1] - k);
+    min = Math.min(arr[i] - k, arr[0] + k);
+
+    diff = Math.min(diff, max - min);
+  }
+
+  return diff;
+}
+
+minimizeTheDifference([1, 15, 10], 6);
