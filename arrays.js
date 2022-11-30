@@ -821,3 +821,160 @@ function minimizeTheDifference(arr, k) {
 }
 
 minimizeTheDifference([1, 15, 10], 6);
+
+//
+//find the minimum no of jumps to go from start to end
+// of array
+//
+
+function minimumNoOfJumpsToReachEnd(arr) {
+  let pos = 0;
+  let dest = 0;
+  let jump = 0;
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    dest = Math.max(dest, arr[i] + i);
+
+    if (pos === i) {
+      pos = dest;
+      jump++;
+    }
+  }
+
+  return jump;
+}
+
+minimumNoOfJumpsToReachEnd([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9]);
+minimumNoOfJumpsToReachEnd([2, 0, 3, 1, 1, 1, 1, 10]);
+minimumNoOfJumpsToReachEnd([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+
+//
+// find duplicates in an array
+//
+
+// this method finds duplicates in time complexity
+//  of O(n * n) so we will optimize it.
+function findDuplicates(arr) {
+  let index = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        index.push(arr[i]);
+      }
+    }
+  }
+
+  return index.join(" ");
+}
+
+// console.log(findDuplicates([1, 2, 3, 6, 3, 6, 1]));
+
+// findDuplicates([1, 2, 3, 4, 3]);
+
+//find duplicate in an array of n + 1 integers
+//this solution finds the duplicate in time
+// complexity of O(n)
+function findDuplicateInNPlusOne(arr, n) {
+  for (let i = 0; i < n; i++) {
+    let index = Math.abs(arr[i]);
+
+    if (arr[index] < 0) return index;
+
+    arr[index] = -arr[index];
+  }
+  return -1;
+}
+
+let arrNew = [3, 1, 3, 4, 2];
+// console.log(findDuplicateInNPlusOne(arrNew, arrNew.length));
+
+// merge two sorted arrays
+// the space and time complexity of this solution is O(N + M)
+// where m and n are the lengths of both the arrays respectively
+function mergeTwoSortedArrays(arr1, arr2) {
+  let combined = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      combined.push(arr1[i]);
+      i++;
+    } else {
+      combined.push(arr2[j]);
+      j++;
+    }
+  }
+
+  while (i < arr1.length) {
+    combined.push(arr1[i]);
+    i++;
+  }
+
+  while (j < arr2.length) {
+    combined.push(arr2[j]);
+    j++;
+  }
+
+  return combined;
+}
+
+// console.log(mergeTwoSortedArrays([1, 3, 5, 7], [2, 4, 6, 8]));
+
+//the time complexity of this solution in O(nlogn + mlogm)
+//  and space is O(n)
+function mergeTwoSortedArrays2(arr1, arr2) {
+  let myMap = new Map();
+
+  for (let i = 0; i < arr1.length; i++) {
+    myMap.set(arr1[i], true);
+  }
+  for (let i = 0; i < arr2.length; i++) {
+    myMap.set(arr2[i], true);
+  }
+
+  let arr = [];
+
+  for (const key of myMap.keys()) {
+    arr.push(key);
+  }
+
+  arr.sort();
+  return arr;
+}
+
+// console.log(mergeTwoSortedArrays2([1, 3, 5, 7], [2, 4, 6, 8]));
+
+// mergeTwoSortedArrays([5, 8, 9], [4, 7, 8]);
+
+//merging two sorted arrays without using extra space
+
+function handleArrayTwo(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < arr[i - 1]) {
+      let temp = arr[i];
+      arr[i] = arr[i - 1];
+      arr[i - 1] = temp;
+    }
+  }
+  return arr;
+}
+// merging two sorted arrays in constant space
+function mergeTwoSortedArraysWithoutSpace(arr1, arr2) {
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length) {
+    if (arr1[i] > arr2[j]) {
+      let temp = arr1[i];
+      arr1[i] = arr2[j];
+      arr2[j] = temp;
+      handleArrayTwo(arr2);
+    }
+    i++;
+  }
+  console.log(arr1, arr2);
+}
+
+mergeTwoSortedArraysWithoutSpace([1, 3, 4, 5, 7], [2, 4, 6, 8, 21]);
