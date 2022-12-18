@@ -163,4 +163,68 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 
 // console.log(pivot([4, 6, 1, 7, 3, 2, 5]));
 
-console.log(quickSort([4, 6, 1, 7, 3, 2, 5]));
+// console.log(quickSort([4, 6, 1, 7, 3, 2, 5]));
+
+// merge sort with another approach
+
+function merge2(arr, l, m, r) {
+  let n1 = m - l + 1;
+  let n2 = r - m;
+
+  let left = new Array(n1);
+  let right = new Array(n2);
+
+  for (let i = 0; i < n1; i++) {
+    left[i] = arr[l + i];
+  }
+
+  for (let j = 0; j < n2; j++) {
+    right[j] = arr[m + 1 + j];
+  }
+
+  let i = 0;
+  let j = 0;
+  let k = l;
+
+  while (i < n1 && j < n2) {
+    if (left[i] < right[j]) {
+      arr[k] = left[i];
+      i++;
+    } else {
+      arr[k] = right[j];
+      j++;
+    }
+    k++;
+  }
+
+  while (i < n1) {
+    arr[k] = left[i];
+    i++;
+    k++;
+  }
+
+  while (j < n2) {
+    arr[k] = right[j];
+    j++;
+    k++;
+  }
+
+  return arr;
+}
+
+function mergeSort2(arr, l, r) {
+  if (l < r) {
+    let mid = Math.floor((l + r) / 2);
+
+    mergeSort2(arr, l, mid);
+
+    mergeSort2(arr, mid + 1, r);
+
+    merge2(arr, l, mid, r);
+  }
+  return arr;
+}
+
+let nowArr = [4, 6, 1, 7, 3, 2, 5];
+
+console.log(mergeSort2(nowArr, 0, nowArr.length - 1));
