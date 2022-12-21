@@ -8,7 +8,7 @@ function summaryRanges(nums) {
   for (let i = 1; i < nums.length; i++) {
     if (cur + 1 === nums[i]) {
       res[res.length - 1][1] = cur + 1;
-      //   console.log(res[res.length - 1][1], cur + 1);
+      
     } else {
       res.push([nums[i]]);
       console.log(nums[i]);
