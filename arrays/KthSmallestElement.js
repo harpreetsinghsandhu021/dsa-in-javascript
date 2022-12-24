@@ -9,3 +9,5 @@ function KthSmallestElement(arr, k) {
 
   return arr[k - 1];
 }
+
+

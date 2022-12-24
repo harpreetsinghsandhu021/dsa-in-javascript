@@ -31,7 +31,7 @@ function findItemsInCommon(arr1, arr2) {
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr2.length; j++) {
       if (arr1[i] === arr2[j]) {
-        return true;
+        return arr1[i];
       }
     }
   }
@@ -41,13 +41,12 @@ function findItemsInCommon2(arr1, arr2) {
   let obj = {};
 
   for (let i = 0; i < arr1.length; i++) {
-    obj[arr1[i]] = true;
+    obj[arr1[i]] = arr1[i];
   }
 
-  console.log(obj);
   for (let j = 0; j < arr2.length; j++) {
     if (obj[arr2[j]]) {
-      return true;
+      return obj[arr2[j]];
     }
   }
   return false;
@@ -59,7 +58,7 @@ function findItemsInCommon2(arr1, arr2) {
 // console.log("not-opt", end - start);
 
 // let start2 = performance.now();
-// console.log(findItemsInCommon2([5, 23, 63, 64], [20, 56, 3, 67, 23]));
+console.log(findItemsInCommon2([5, 23, 63, 64], [20, 56, 3, 67, 23]));
 // let end2 = performance.now();
 // console.log("opt", end2 - start2);
 
@@ -158,7 +157,6 @@ function findTwoUniqueNumbers(arr) {
   let number2 = 0;
 
   for (let j = 0; j < arr.length; j++) {
-
     if ((arr[j] & res) > 0) {
       number1 = number1 ^ arr[j];
     } else {
@@ -358,11 +356,10 @@ function findsecondHighest(arr) {
 // const arr = [34, 56, 23, 88, 90];
 // const arr = [5, 4, 3, 2, 1];
 
-//  console.log(secondHighest(arr))
+console.log(secondHighest(arr));
 // console.log(findLargestAndSmallest(arr))
 // console.log(findsecondHighest(arr));
 // findsecondHighest(arr)
-
 
 // diagonalDifference(arr2);
 
@@ -519,5 +516,3 @@ function majorityElements3(arr) {
 // console.log(majorityElements3([]));
 // console.log(majorityElements2([89, 44, 66, 44, 34, 44, 44, 44]));
 // console.log(majorityElements3([89, 44, 66, 44, 34, 44, 44, 44]));
-
-
