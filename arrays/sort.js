@@ -30,7 +30,6 @@ function selectionSort(arr) {
 }
 
 // console.log(bubbleSort([3, 2, 1, 0, 0, 0]));
-// console.log(insertionSort([3, 2, 1, 0, 0, 0]));
 function removeDuplicate(arr) {
   const [...pfArray] = new Set([...arr]);
   return pfArray;
@@ -227,4 +226,4 @@ function mergeSort2(arr, l, r) {
 
 let nowArr = [4, 6, 1, 7, 3, 2, 5];
 
-console.log(mergeSort2(nowArr, 0, nowArr.length - 1));
+// console.log(mergeSort2(nowArr, 0, nowArr.length - 1));
