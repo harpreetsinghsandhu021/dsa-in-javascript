@@ -1,28 +1,33 @@
-function search(arr, s, e, key) {
-  if (s < e) return -1;
-  if (s == e) return e;
-  let m = Math.floor((s + e) / 2);
+const searchHelper = (arr, target, start, end) => {
+  if (arr[start] === target) return start;
+  if (arr[end] === target) return end;
+  if (start > end) return -1;
+  let mid = Math.floor(start + (end - start) / 2);
 
-  if (arr[m] === key) {
-    return m;
+  if (arr[mid] === target) {
+    return mid;
   }
 
-  if (arr[s] < arr[m]) {
-    if (key >= arr[s] && key <= arr[m]) {
-      return search(arr, s, m - 1, key);
+  if (arr[start] <= arr[mid]) {
+    if (target >= arr[start] && target <= arr[mid]) {
+      return searchHelper(arr, target, start, mid - 1);
     } else {
-      return search(arr, m + 1, e, key);
+      return searchHelper(arr, target, mid + 1, end);
     }
   }
 
-  if (key <= arr[e] && key >= arr[m]) {
-    return search(arr, m + 1, e, key);
+  if (target <= arr[end] && target >= arr[mid]) {
+    return searchHelper(arr, target, mid + 1, end);
   }
 
-  return search(arr, s, m - 1, key);
-}
+  return searchHelper(arr, target, start, mid - 1);
+};
+
+var search = function (nums, target) {
+  return searchHelper(nums, target, 0, nums.length - 1);
+};
 
 let arr = [4, 5, 6, 7, 0, 1, 2];
 let n = arr.length;
-let key = 3;
-console.log(search(arr, 0, n, key));
+let key = 1;
+console.log(search(arr, key));
