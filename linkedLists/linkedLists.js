@@ -210,7 +210,7 @@ class linkedList {
       temp = temp.next;
     }
 
-    return arr.join(",").replaceAll(",", "");
+    return arr.join(",").replaceAll(",", " -> ");
     // return arr[1] + arr[]
   }
   shift() {
@@ -266,7 +266,22 @@ class linkedList {
     this.length++;
     return this;
   }
+  insertRec(value, index) {
+    return this.insertHelp(value, index, this.head);
+  }
+  insertHelp(value, index, head) {
+    if (head.next === null) return;
 
+    if (index === 1) {
+      const newNode = new Node(value);
+      newNode.next = head.next;
+      head.next = newNode;
+      this.length++;
+      return;
+    }
+
+    return this.insertHelp(value, index - 1, head.next);
+  }
   remove(index) {
     if (index < 0 || index > this.length) return undefined;
     if (index === 0) return this.shift();
@@ -296,21 +311,42 @@ class linkedList {
     }
     return this;
   }
-}
-var addTwoNumbers = function (l1, l2) {
-  const myArr = [];
-  for (let i = 0; i < l1.length; i++) {
-    for (let j = 0; j < l2.length; j++) {
-      let sum = l1[i] + l2[j];
+  removeDuplicates() {
+    let node = this.head;
+
+    while (node.next !== null) {
+      if (node.value === node.next.value) {
+        node.next = node.next.next;
+        this.length--;
+      } else {
+        node = node.next;
+      }
     }
+
+    this.tail = node;
   }
-};
+  checkCycle() {
+    let slow = this.head;
+    let fast = this.head;
 
-const myLinkedList = new linkedList(2);
-const secondLinkedList = new linkedList();
+    while (fast !== null && fast.next !== null) {
+      fast = fast.next.next;
+      slow = slow.next;
 
-myLinkedList.push(4);
+      if (fast.value === slow.value) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
+
+const myLinkedList = new linkedList(1);
+
+myLinkedList.push(1);
+myLinkedList.push(2);
+myLinkedList.push(2);
 myLinkedList.push(3);
-myLinkedList.reverse();
+myLinkedList.push(3);
+myLinkedList.removeDuplicates();
 console.log(myLinkedList.allValues());
-// console.log(myLinkedList);
