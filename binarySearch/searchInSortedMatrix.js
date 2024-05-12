@@ -81,4 +81,46 @@ let mat = [
   [23, 30, 34, 60],
 ];
 
-console.log(search(mat, 3));
+var searchMatrix = function (matrix, target) {
+  // Step 1: Check for empty matrix
+  if (!matrix || matrix.length === 0 || matrix[0].length === 0) {
+    return false;
+  }
+
+  // Step 2: Get number of rows and columns
+  let rows = matrix.length;
+  let cols = matrix[0].length;
+
+  // Step 3: Initialize search space boundaries
+  let left = 0;
+  let right = rows * cols - 1;
+
+  // Step 4: Binary search
+  while (left <= right) {
+    // Step 4a: Calculate mid index
+    let mid = Math.floor((left + right) / 2);
+
+    // Step 4b: Convert mid index to row and column indices
+    let row = Math.floor(mid / cols);
+    let col = mid % cols;
+
+    // Step 4c: Retrieve value at mid index
+    let midValue = matrix[row][col];
+
+    // Step 4d: Check if mid value matches target
+    if (midValue === target) {
+      return true;
+    } else if (midValue < target) {
+      // Step 4e: If mid value is less than target, adjust left boundary
+      left = mid + 1;
+    } else {
+      // Step 4f: If mid value is greater than target, adjust right boundary
+      right = mid - 1;
+    }
+  }
+
+  // Step 5: Target not found
+  return false;
+};
+
+console.log(searchMatrix(mat, 3));
