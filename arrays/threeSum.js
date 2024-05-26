@@ -3,6 +3,7 @@ function threeSum(nums) {
 
   // firstly sort the array which gives a time complexity of nlogn
   nums.sort((a, b) => a - b);
+  console.log(nums);
 
   for (let i = 0; i < nums.length; i++) {
     // skip duplicate elements
@@ -13,8 +14,6 @@ function threeSum(nums) {
 
     while (left < right) {
       const sum = nums[i] + nums[left] + nums[right];
-      console.log(sum);
-
       if (sum === 0) {
         ans.push([nums[i], nums[left], nums[right]]);
         //   skip duplicate elements
@@ -33,6 +32,6 @@ function threeSum(nums) {
   return ans;
 }
 
-let nums = [-1, 0, 1, 2, -1, -4];
+let nums = [0, -1, 2, -3, 1];
 
 console.log(threeSum(nums));

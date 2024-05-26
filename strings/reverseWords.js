@@ -1,7 +1,7 @@
 // reverse words in a string
 
 function reverseWords(s) {
-  s = s.split("");
+  s = s.split(/\s+/);
   let start = 0;
   let end = s.length - 1;
 
@@ -13,10 +13,9 @@ function reverseWords(s) {
     end--;
   }
 
-  s = s.join("");
-  s = s.split(" ").reverse();
+  s = s.join(" ");
 
-  return s.join(" ");
+  return s;
 }
 
-// console.log(reverseWords("God Ding"));
+console.log(reverseWords("God Ding"));

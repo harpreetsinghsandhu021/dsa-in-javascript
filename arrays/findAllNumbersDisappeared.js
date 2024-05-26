@@ -7,8 +7,6 @@ function missing_elements(vec) {
     vec[temp] = vec[temp] > 0 ? -vec[temp] : vec[temp];
   }
   for (let i = 0; i < vec.length; i++) {
-    console.log(vec[i]);
-
     if (vec[i] > 0) mis.push(i + 1);
   }
 

@@ -8,6 +8,7 @@ function longestCommonPrefix(a) {
   a.sort();
 
   let end = Math.min(a[0].length, a[size - 1].length);
+  console.log(end);
 
   let i = 0;
   while (i < end && a[0][i] == a[size - 1][i]) i++;

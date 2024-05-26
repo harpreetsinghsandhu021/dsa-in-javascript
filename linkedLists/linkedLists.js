@@ -339,14 +339,210 @@ class linkedList {
     }
     return false;
   }
+  findLength() {
+    let curr = this.head;
+    let length = 0;
+
+    while (curr !== null) {
+      curr = curr.next;
+      length++;
+    }
+
+    return length;
+  }
+  removeNthFromEnd = function (n) {
+    let end = this.length - n;
+    let prev = this.head;
+    let curr = this.head;
+
+    for (let i = 0; i < end; i++) {
+      prev = curr;
+      curr = curr.next;
+    }
+
+    prev.next = curr.next;
+
+    return true;
+  };
+  swapPairs() {
+    let prev = null;
+    let curr = this.head;
+
+    let length = this.findLength();
+    let k = 2;
+
+    let count = Math.floor(length / k);
+
+    while (count > 0) {
+      let last = prev;
+      let newEnd = curr;
+      let next = curr.next;
+
+      for (let i = 0; i < k; i++) {
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+
+        if (next !== null) {
+          next = curr.next;
+        }
+      }
+
+      if (last !== null) {
+        last.next = prev;
+      } else {
+        this.head = prev;
+      }
+      newEnd.next = curr;
+      prev = newEnd;
+      count--;
+    }
+
+    return true;
+  }
+  reverseKGroup(k) {
+    let curr = this.head;
+    let prev = null;
+
+    let length = this.findLength();
+
+    let count = Math.floor(length / k);
+
+    while (count > 0) {
+      let last = prev;
+      let newEnd = curr;
+      let next = curr.next;
+
+      for (let i = 0; i < k; i++) {
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+
+        if (next !== null) {
+          next = curr.next;
+        }
+      }
+
+      if (last !== null) {
+        last.next = prev;
+      } else {
+        this.head = prev;
+      }
+
+      newEnd.next = curr;
+      prev = newEnd;
+      count--;
+    }
+    return true;
+  }
+
+  rotateList(head, k) {
+    if (k <= 0 || head === null || head.next === null) {
+      return head;
+    }
+
+    let last = head;
+    let length = 1;
+    while (last.next !== null) {
+      last = last.next;
+      length++;
+    }
+
+    last.next = head;
+
+    let rotations = k % length;
+    let skip = length - rotations;
+
+    let newEnd = head;
+
+    for (let i = 0; i < skip - 1; i++) {
+      newEnd = newEnd.next;
+    }
+    console.log(newEnd.next.value);
+
+    head = newEnd.next;
+    newEnd.next = null;
+
+    return true;
+  }
+
+  deleteDuplicates = function (head) {
+    let curr = head;
+    let prev = null;
+
+    while (curr !== null && curr.next !== null) {
+      let next = curr.next;
+
+      if (curr.value === next.value) {
+        while (next !== null && curr.value === next.value) {
+          next = next.next;
+        }
+
+        console.log(prev.value);
+
+        if (prev !== null) {
+          prev.next = next;
+        } else {
+          head = next;
+        }
+      } else {
+        prev = curr;
+      }
+      curr = next;
+    }
+    return true;
+  };
+
+  reverseList2(head, left, right) {
+    let curr = head;
+    let prev = null;
+
+    for (let i = 0; i < left - 1; i++) {
+      prev = curr;
+      curr = curr.next;
+    }
+
+    let last = prev;
+    let newStart = curr;
+    let next = newStart.next;
+
+    for (let i = 0; i < right - left; i++) {
+      newStart.next = last;
+      last = newStart;
+      newStart = next;
+
+      if (next !== null) {
+        next = newStart.next;
+      }
+    }
+
+    if (last === null) {
+      head = newStart;
+    } else {
+      last.next = newStart;
+    }
+
+    if (prev !== null) {
+      prev.next = last;
+    }
+
+    return true;
+  }
 }
 
 const myLinkedList = new linkedList(1);
+const secondLinkedList = new linkedList(5);
 
-myLinkedList.push(1);
-myLinkedList.push(2);
 myLinkedList.push(2);
 myLinkedList.push(3);
-myLinkedList.push(3);
-myLinkedList.removeDuplicates();
+myLinkedList.push(4);
+myLinkedList.push(5);
+
+secondLinkedList.push(6);
+secondLinkedList.push(4);
+
 console.log(myLinkedList.allValues());
+console.log(myLinkedList.reverseList2(myLinkedList.head, 2, 4));
+console.log(myLinkedList.allValues());
+
+// console.log(myLinkedList.removeNthFromEnd(2));

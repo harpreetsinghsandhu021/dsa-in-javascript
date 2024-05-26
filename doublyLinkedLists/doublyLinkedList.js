@@ -1,4 +1,4 @@
- class Node {
+class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
@@ -93,35 +93,54 @@ class doublyLinkedList {
     return temp;
   }
 
-  reverse(){
-    let temp =  this.head
-    this.head = this.tail
-    this.tail = temp
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
 
-    let next = temp.next
+    let next = temp.next;
 
-    while(temp){
-      next = temp.next
-      temp.next = temp.prev
-      temp.prev = next
+    while (temp) {
+      next = temp.next;
+      temp.next = temp.prev;
+      temp.prev = next;
 
-      temp = next
-
+      temp = next;
     }
 
-    return this
-
-
+    return this;
   }
+  swapFirstLast() {
+    let temp = this.head;
+    let tempNext = temp.next;
+    let lastPrev = this.tail.prev;
 
+    this.head = this.tail;
+    this.head.next = tempNext;
+
+    this.tail = temp;
+    this.tail.prev = lastPrev;
+    lastPrev.next = this.tail;
+
+    return this;
+  }
+  allValues() {
+    let arr = [];
+    let temp = this.head;
+    for (let i = 0; i < this.length; i++) {
+      arr.push(temp.value);
+      temp = temp.next;
+    }
+
+    return arr.join(",").replaceAll(",", " -> ");
+  }
 }
 
-const myDouble = new doublyLinkedList(12);
-myDouble.push(33);
-myDouble.push(8);
-myDouble.push(26);
-myDouble.push(44);
-console.log(myDouble);
+const myDouble = new doublyLinkedList(1);
+myDouble.push(2);
+myDouble.push(3);
+myDouble.push(4);
+myDouble.push(5);
 
-console.log(myDouble.reverse());
-
+console.log(myDouble.swapFirstLast());
+console.log(myDouble.allValues());
