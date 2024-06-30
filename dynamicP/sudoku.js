@@ -72,3 +72,10 @@ let n = board.length;
 console.table(board);
 console.log(solveSudoku(board, n));
 console.table(board);
+
+function gcd(a, b) {
+  if (a === 0) {
+    return b;
+  }
+  return gcd(b % a, a);
+}

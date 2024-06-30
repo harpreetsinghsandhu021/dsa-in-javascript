@@ -528,21 +528,47 @@ class linkedList {
 
     return true;
   }
+  partitionList(x) {
+    let head = this.head;
+    let lesserHead = new Node(0);
+    let greaterHead = new Node(0);
+
+    let less = lesserHead;
+    let greater = greaterHead;
+
+    while (head !== null) {
+      if (head.value < x) {
+        less.next = head;
+        less = less.next;
+      } else {
+        greater.next = head;
+        greater = greater.next;
+      }
+
+      head = head.next;
+    }
+
+    greater.next = null;
+    less.next = greaterHead.next;
+
+    return true;
+  }
 }
 
 const myLinkedList = new linkedList(1);
 const secondLinkedList = new linkedList(5);
 
-myLinkedList.push(2);
-myLinkedList.push(3);
 myLinkedList.push(4);
+myLinkedList.push(3);
+myLinkedList.push(2);
 myLinkedList.push(5);
+myLinkedList.push(2);
 
 secondLinkedList.push(6);
 secondLinkedList.push(4);
 
 console.log(myLinkedList.allValues());
-console.log(myLinkedList.reverseList2(myLinkedList.head, 2, 4));
+console.log(myLinkedList.partitionList(3));
 console.log(myLinkedList.allValues());
 
 // console.log(myLinkedList.removeNthFromEnd(2));

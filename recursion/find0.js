@@ -1,5 +1,5 @@
 function findZeros2(arr, target, start = 0, end = arr.length - 1) {
-  let mid = ~~(start + (end - start) / 2);
+  let mid = Math.floor(start + (end - start) / 2);
 
   if (arr[mid] === target) {
     return mid;
